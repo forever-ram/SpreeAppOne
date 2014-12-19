@@ -26,6 +26,12 @@ gem 'sdoc', '~> 0.4.0',          group: :doc
 # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
 gem 'spring',        group: :development
 
+# Use spree for building store
+gem 'spree', github: 'spree/spree', branch: '2-4-stable'
+
+# Use spree_auth_devise for admin support
+gem 'spree_auth_devise', github: 'spree/spree_auth_devise', branch: '2-4-stable'
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
@@ -38,3 +44,5 @@ gem 'spring',        group: :development
 # Use binding.pry
 gem 'pry', group: [:development, :test]
 
+# Use to hide assets log in development env
+gem 'quiet_assets', group: :development
