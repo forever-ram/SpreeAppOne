@@ -32,6 +32,8 @@ gem 'spree', github: 'spree/spree', branch: '2-4-stable'
 # Use spree_auth_devise for admin support
 gem 'spree_auth_devise', github: 'spree/spree_auth_devise', branch: '2-4-stable'
 
+gem 'puma'
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 

@@ -2,10 +2,10 @@
 lock '3.3.5'
 
 set :application, 'SpreeAppOne'
-set :repo_url, 'git@example.com:me/my_repo.git'
+set :repo_url, 'https://github.com/forever-ram/SpreeAppOne.git'
 
 # Set tmp directory for application deployment
-set :tmp_dir, "/home/deploy/tmp"
+set :tmp_dir, "/tmp"
 
 # Default branch is :master
 # ask :branch, proc { `git rev-parse --abbrev-ref HEAD`.chomp }.call
@@ -29,7 +29,7 @@ set :pty, true
 set :linked_files, fetch(:linked_files, []).push('config/database.yml', 'config/secrets.yml')
 
 # Default value for linked_dirs is []
-set :linked_dirs, fetch(:linked_dirs, []).push('bin', 'log', 'tmp/pids', 'tmp/cache', 'tmp/sockets', 'vendor/bundle', 'public/system')
+set :linked_dirs, fetch(:linked_dirs, []).push('/tmp/log', 'tmp/pids', 'tmp/sockets')
 
 # Default value for default_env is {}
 # set :default_env, { path: "/opt/ruby/bin:$PATH" }
@@ -39,16 +39,18 @@ set :linked_dirs, fetch(:linked_dirs, []).push('bin', 'log', 'tmp/pids', 'tmp/ca
 
 namespace :default_setup do
   desc 'Create database.yml and secrets file.yml'
-  task :database_and_secrets, :except => { :no_release => true } do
-    execute "mkdir #{shared_path}/config -p"
-    execute "touch #{shared_path}/config/database.yml"
-    execute "touch #{shared_path}/config/secrets.yml"
+  task :database_and_secrets do
+    on roles(:app) do
+      execute "mkdir #{shared_path}/config -p"
+      execute "touch #{shared_path}/config/database.yml"
+      execute "touch #{shared_path}/config/secrets.yml"
+    end
   end
 end
 
 namespace :puma do
   desc 'Create Directories for Puma Pids and Socket'
-  task :make_puma_dirs_files, :except => { :no_release => true } do
+  task :make_puma_dirs_files do
     on roles(:app) do
       execute "mkdir #{shared_path}/tmp/sockets -p"
       execute "mkdir #{shared_path}/tmp/pids -p"

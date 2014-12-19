@@ -346,6 +346,7 @@ DEPENDENCIES
   jquery-rails
   mysql2
   pry
+  puma
   quiet_assets
   rails (= 4.1.8)
   sass-rails (~> 4.0.3)

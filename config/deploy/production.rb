@@ -1,7 +1,7 @@
 # Set the ENV and branch and path for the server
 set :rails_env, 'production'
 set :branch, "master"
-set :deploy_to, '/home/deploy/apps/SpreeAppOneProduction/'
+set :deploy_to, '/apps/SpreeAppOneProduction/'
 
 # Simple Role Syntax
 # ==================
@@ -9,9 +9,9 @@ set :deploy_to, '/home/deploy/apps/SpreeAppOneProduction/'
 # is considered to be the first unless any hosts have the primary
 # property set.  Don't declare `role :all`, it's a meta role.
 
-role :app, %w{deploy@example.com}
-role :web, %w{deploy@example.com}
-role :db,  %w{deploy@example.com}
+role :app, %w{64.27.22.27}
+role :web, %w{64.27.22.27}
+role :db,  %w{64.27.22.27}
 
 
 # Extended Server Syntax
@@ -20,7 +20,7 @@ role :db,  %w{deploy@example.com}
 # server list. The second argument is a, or duck-types, Hash and is
 # used to set extended properties on the server.
 
-server 'example.com', user: 'deploy', roles: %w{web app}, my_property: :my_value
+server '64.27.22.27', user: 'root', roles: %w{web app}, my_property: :my_value
 
 
 # Custom SSH Options
@@ -33,7 +33,7 @@ server 'example.com', user: 'deploy', roles: %w{web app}, my_property: :my_value
  set :ssh_options, {
    keys: %w(/home/sumit/.ssh/id_rsa),
    forward_agent: true,
-   user: 'deploy',
+   user: 'root',
    auth_methods: %w(publickey)
  }
 #
