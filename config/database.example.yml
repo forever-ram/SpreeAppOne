@@ -1,0 +1,22 @@
+default: &default
+  adapter: postgresql
+  pool: 5
+  timeout: 5000
+
+development:
+  <<: *default
+  database: spree_app_one_dev
+  username: postgres
+  password: postgres
+
+production:
+  <<: *default
+  database: spree_app_one_prod
+  username: postgres
+  password: postgres
+
+staging:
+  <<: *default
+  database: spree_app_one_staging
+  username: postgres
+  password: postgres
