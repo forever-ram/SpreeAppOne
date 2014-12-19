@@ -1,22 +1,22 @@
 default: &default
-  adapter: postgresql
+  adapter: mysql2
   pool: 5
   timeout: 5000
 
 development:
   <<: *default
   database: spree_app_one_dev
-  username: postgres
-  password: postgres
+  username: root
+  password: root
 
 production:
   <<: *default
   database: spree_app_one_prod
-  username: postgres
-  password: postgres
+  username:
+  password:
 
 staging:
   <<: *default
   database: spree_app_one_staging
-  username: postgres
-  password: postgres
+  username:
+  password:
